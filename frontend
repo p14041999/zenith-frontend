@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+if(global.TextEncoder === undefined){
+    const { TextEncoder, TextDecoder } = require('util');
+    global.TextEncoder = TextEncoder;
+    global.TextDecoder = TextDecoder;
+}
+require('dotenv').config();
+const mongo = require('mongoose');
+const path = require('path');
+const certPath = path.join(__dirname,'ca-certificate.crt');
+
+const app = require('./src/index.js');
+
+
+mongo.connect(`${process.env.MONGO_URI}?authSource=admin&tls=true&tlsCAFile=${certPath}`,(err)=>{
+    if(err)
+        return console.log(err);
+    return console.log("DB Connected!");
+});
+
+
+
+// Start Server
+app.listen(3000);
