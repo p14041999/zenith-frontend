@@ -6,9 +6,22 @@ const Transaction = require('../models/transaction');
 const TokenTransfer = require('../models/tokenTransaction');
 const Address = require('../models/address');
 const Contract = require('../models/contract');
-router.get('/',(req,res)=>{
-    // res.send("Home Page!")
-    res.render('index');
+router.get('/',async (req,res)=>{
+    let txnCount = await Transaction.count()
+    let address = await Address.count()
+    let txns = await Transaction.find().sort({timestamp:-1}).limit(10);
+    let blocks = await Block.find().sort({ timestamp: -1 }).limit(10);
+    let currentBlock = await helper.currentBlock();
+    // console.log(blocks); 
+    let stat={
+        totalTx:txnCount,
+        latestBlock:currentBlock,
+        last10Bk:blocks,
+        last10Txn:txns,
+        holders:address,
+        price:0.2
+    }
+    res.render('index',stat);
 })
 router.get('/address/:address',async (req,res)=>{
     try{
@@ -74,17 +87,21 @@ router.get('/tx/:hash',async (req,res)=>{
         let txns = await Transaction.findOne({hash:req.params.hash});
         let currentBlock = await helper.currentBlock();
         let tknTransfers = await TokenTransfer.find({transactionHash:req.params.hash})
-        if(txns.contractAddress != null){
-            res.render('transaction',{tx:txns,transfers:tknTransfers,interaction:false,creation:true,block:currentBlock,rate});
-        }else{
-            if(await helper.isContract(txns.to)){
-                res.render('transaction',{tx:txns,transfers:tknTransfers,interaction:true,creation:false,block:currentBlock,rate});
+        if(txns){
+            if(txns.contractAddress != null){
+                res.render('transaction',{tx:txns,transfers:tknTransfers,interaction:false,creation:true,block:currentBlock,rate});
             }else{
-                res.render('transaction',{tx:txns,transfers:tknTransfers,interaction:false,creation:false,block:currentBlock,rate});
+                if(await helper.isContract(txns.to)){
+                    res.render('transaction',{tx:txns,transfers:tknTransfers,interaction:true,creation:false,block:currentBlock,rate});
+                }else{
+                    res.render('transaction',{tx:txns,transfers:tknTransfers,interaction:false,creation:false,block:currentBlock,rate});
+                }
             }
-        }
         // txns.transfers = tknTransfers;
         // res.send(txns);
+        }else{
+            res.send("Transaction is still pending!");
+        }
     }catch(e){
         console.log(e);
         res.send("502 - Internal server error!");

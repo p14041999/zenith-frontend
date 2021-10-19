@@ -75,7 +75,7 @@
                         <div class="card-body d-flex justify-content-between align-items-center p-4">
                                 <div>
                                     <h4 class="fw-normal text-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Price of ZENITH in Current Phase">Price</h4>
-                                    <p class="text-dark">1M</p>
+                                    <p class="text-dark">$<%= price.toLocaleString('en-US') %> / ZENITH</p>
                                 </div>
                             <div class="fs-3 text-primary">
                                 <i class="fas fa-hand-holding-usd"></i>
@@ -88,7 +88,7 @@
                     <div class="card-body d-flex justify-content-between align-items-center p-4">
                         <div>
                             <h4 class="fw-normal text-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Total No of Holders">Holders</h4>
-                            <p class="text-dark">1M</p>
+                            <p class="text-dark"><%= holders %></p>
                         </div>
                         <div class="fs-3 text-primary">
                             <i class="fas fa-users"></i>
@@ -101,7 +101,7 @@
                     <div class="card-body d-flex justify-content-between align-items-center p-4">
                         <div>
                             <h4 class="fw-normal text-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Latest Block in the Chain">Latest Block</h4>
-                            <p class="text-dark">1M</p>
+                            <p class="text-dark"><a href="/block/<%= latestBlock %>"><%= latestBlock.toLocaleString('en-US') %></a></p>
                         </div>
                         <div class="fs-3 text-primary">
                             <i class="fas fa-cube"></i>
@@ -114,7 +114,7 @@
                     <div class="card-body d-flex justify-content-between align-items-center p-4">
                         <div>
                             <h4 class="fw-normal text-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Total No of Transactions">Transactions</h4>
-                            <p class="text-dark">1M</p>
+                            <p class="text-dark"><%= totalTx.toLocaleString('en-US') %> Transactions</p>
                         </div>
                         <div class="fs-3 text-primary">
                             <i class="fas fa-exchange-alt"></i>
@@ -136,30 +136,16 @@
                     <div class="card-body p-0 mb-0">
                         <table class="table table-hover mb-0">
                             <tbody>
+                                <%for(let bk of last10Bk){%>
                                 <tr>
                                     <td>
                                         <div class="d-flex align-items-center justify-content-center bg-light" style="width: 30px;height: 30px; border-radius:5px;">Bk</div>
                                     </td>
-                                    <td>123456</td>
-                                    <td>Total Txns</td>
-                                    <td>gas Used</td>
+                                    <td><a href="/block/<%= bk.number %>"><%= bk.number %></a></td>
+                                    <td><%= bk.transactions.length %> Transactions</td>
+                                    <td><%= bk.gasUsed %> Gas Used</td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center justify-content-center bg-light" style="width: 30px;height: 30px; border-radius:5px;">Bk</div>
-                                    </td>
-                                    <td>123456</td>
-                                    <td>Total Txns</td>
-                                    <td>Gas Used</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center justify-content-center bg-light" style="width: 30px;height: 30px; border-radius:5px;">Bk</div>
-                                    </td>
-                                    <td>123456</td>
-                                    <td>Total Txns</td>
-                                    <td>gas Used</td>
-                                </tr>
+                                <%}%>
                             </tbody>
                         </table>
                     </div>
@@ -174,30 +160,16 @@
                     <div class="card-body p-0 mb-0">
                         <table class="table table-hover mb-0">
                             <tbody>
-                                <tr>
+                                <%for(let tx of last10Txn){%>
+                                    <tr>
                                     <td>
                                         <div class="d-flex align-items-center justify-content-center bg-light" style="width: 30px;height: 30px; border-radius:5px;">Tx</div>
                                     </td>
-                                    <td>0xd809bfd38baa7...</td>
-                                    <td>To</td>
-                                    <td>Value</td>
+                                    <td><a href="/tx/<%= tx.hash %>"><%= tx.hash.substr(0,15) %></a>...</td>
+                                    <td>To <a href="/address/<%= tx.to?tx.to:tx.contractAddress %>"><%= (tx.to?tx.to:tx.contractAddress).substr(0,15) %></a>...</td>
+                                    <td><%= (Number(tx.value)/10**18).toLocaleString('en-US')%> ZENITH</td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center justify-content-center bg-light" style="width: 30px;height: 30px; border-radius:5px;">Tx</div>
-                                    </td>
-                                    <td>0xd809bfd38baa7...</td>
-                                    <td>Total Txns</td>
-                                    <td>Value</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center justify-content-center bg-light" style="width: 30px;height: 30px; border-radius:5px;">Tx</div>
-                                    </td>
-                                    <td>0xd809bfd38baa7...</td>
-                                    <td>Total Txns</td>
-                                    <td>Value</td>
-                                </tr>
+                                <%}%>
                             </tbody>
                         </table>
                     </div>
