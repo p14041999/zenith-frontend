@@ -108,4 +108,30 @@ router.get('/tx/:hash',async (req,res)=>{
     }
 })
 
+router.post('/search',async (req,res)=>{
+    // console.log(req.body);
+    // res.send("DOne!")
+    try {
+        let tLength =req.body.q.toString().length;
+        if(tLength == 42){
+            // 0x0714c62e819041b72bbc3aaa230a6969b6baaf82
+            res.redirect('/address/'+req.body.q);
+        }else{
+            if(tLength != 66){
+                try {
+                    let blockNumber = Number.parseInt(req.body.q);
+                    res.redirect('/block/'+blockNumber);
+                }catch (error) {
+                   res.send("Token Can't be found!");
+                }
+            }else{
+                res.redirect('/tx/'+req.body.q);
+            }
+        }
+    } catch (error) {
+        
+    }
+})
+
+
 module.exports = router;

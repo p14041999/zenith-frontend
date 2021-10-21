@@ -40,12 +40,14 @@
                 <div class="col-12 col-lg-5">
                     <div class="my-5">
                         <h4>Zenith Chain Explorer</h4>
-                        <div class="input-group mt-4 mb-1">
-                            <input type="text" class="form-control py-3" placeholder="Search for Address,Transaction, Block, Token" aria-label="Recipient's username" aria-describedby="button-addon2">
-                            <button class="btn btn-primary" type="button" id="button-addon2">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
+                        <form action="/search" method="post">
+                            <div class="input-group mt-4 mb-1">
+                                <input type="text" class="form-control py-3" name="q" placeholder="Search for Address,Transaction, Block, Token" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                <button class="btn btn-primary" type="submit" id="button-addon2">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </form>
                         <p><strong>Sponsored:</strong> Your Text Ad will be displayed here <a href="#" style="text-decoration: none;">Get it here.</a></p>
                     </div>
                 </div>
