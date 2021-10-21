@@ -129,7 +129,7 @@ router.post('/search',async (req,res)=>{
             }
         }
     } catch (error) {
-        
+        res.send("502- Internal Server Error");
     }
 })
 
