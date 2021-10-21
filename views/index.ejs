@@ -22,13 +22,10 @@
           </a>
           <ul class="d-flex mb-0">
             
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Mainnet
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                Add to Metamask
               </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                <li><a class="dropdown-item" href="#">Mainnet</a></li>
-              </ul>
             </li>
             </ul>
         </div>
@@ -135,7 +132,7 @@
                     <div class="card-header">
                         <p class="card-title mb-0">Last 10 Blocks</p>
                     </div>
-                    <div class="card-body p-0 mb-0">
+                    <div class="card-body p-0 mb-0"  style="overflow-x: scroll;">
                         <table class="table table-hover mb-0">
                             <tbody>
                                 <%for(let bk of last10Bk){%>
@@ -159,7 +156,7 @@
                     <div class="card-header">
                         <p class="card-title mb-0">Last 10 Transactions</p>
                     </div>
-                    <div class="card-body p-0 mb-0">
+                    <div class="card-body p-0 mb-0" style="overflow-x: scroll;">
                         <table class="table table-hover mb-0">
                             <tbody>
                                 <%for(let tx of last10Txn){%>
