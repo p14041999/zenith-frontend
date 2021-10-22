@@ -6,6 +6,9 @@ const Transaction = require('../models/transaction');
 const TokenTransfer = require('../models/tokenTransaction');
 const Address = require('../models/address');
 const Contract = require('../models/contract');
+const Web3 = require('web3');
+
+const web3 =new Web3(process.env.RPC_URL);
 router.get('/',async (req,res)=>{
     let txnCount = await Transaction.count()
     let address = await Address.count()
@@ -29,7 +32,7 @@ router.get('/address/:address',async (req,res)=>{
         if(valid){
             let isContract = await helper.isContract(req.params.address);
             if(isContract){
-                let address = await Address.findOne({address:req.params.address}).populate('transactions');
+                let address = await Address.findOne({address:req.params.address}).populate('transactions').lean();
                 let contract = await Contract.findOne({address:req.params.address});
                 let balance = await helper.getBalance(address.address);
                 // Render Contract Page
@@ -78,8 +81,7 @@ router.get('/block/:number',async (req,res)=>{
         res.send("502 - Internal server error!");
     }
 })
-// Token Contract -> 0xEf730aC4483941273C7f532BAB2F27f6B8D8A313
-// 
+
 router.get('/tx/:hash',async (req,res)=>{
     try{
         // Search for block
@@ -88,13 +90,19 @@ router.get('/tx/:hash',async (req,res)=>{
         let currentBlock = await helper.currentBlock();
         let tknTransfers = await TokenTransfer.find({transactionHash:req.params.hash})
         if(txns){
+            let tx = await web3.eth.getTransaction(req.params.hash);
+            let gPrice = Number(tx.gasPrice);
+
             if(txns.contractAddress != null){
-                res.render('transaction',{tx:txns,transfers:tknTransfers,interaction:false,creation:true,block:currentBlock,rate});
+                let time = new Date(txns.timestamp*1000);
+                res.render('transaction',{tx:txns,gPrice,transfers:tknTransfers,interaction:false,creation:true,block:currentBlock,rate,time});
             }else{
                 if(await helper.isContract(txns.to)){
-                    res.render('transaction',{tx:txns,transfers:tknTransfers,interaction:true,creation:false,block:currentBlock,rate});
+                    let time = new Date(txns.timestamp*1000);
+                    res.render('transaction',{tx:txns,gPrice,transfers:tknTransfers,interaction:true,creation:false,block:currentBlock,rate,time});
                 }else{
-                    res.render('transaction',{tx:txns,transfers:tknTransfers,interaction:false,creation:false,block:currentBlock,rate});
+                    let time = new Date(txns.timestamp*1000);
+                    res.render('transaction',{tx:txns,gPrice,transfers:tknTransfers,interaction:false,creation:false,block:currentBlock,rate,time});
                 }
             }
         // txns.transfers = tknTransfers;

@@ -13,3 +13,8 @@
 a{
     text-decoration: none;
 }
+@media(max-width:900px) {
+    .desktop-only{
+        display: none!important;
+    }
+}
