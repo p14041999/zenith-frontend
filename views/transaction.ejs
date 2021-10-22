@@ -59,7 +59,7 @@
                                 <td style="width: 200px;">
                                     Timestamp:
                                 </td>
-                                <td class="text-start">
+                                <td class="text-start" id="item">
                                     <% let t = new Date(tx.timestamp*1000) %>
                                     <%= time.toString() %>
                                 </td>
@@ -159,7 +159,11 @@
           <span class="text-center">Copyright &copy; 2020-2021 Zenith Chain (UAB) Ltd Reg No. 305865705. All rights reserved</span>
       </div>
     <!-- Scripts -->
+    
     <script>
+        let item = document.getElementById("item");
+        let d = new Date(<%= tx.timestamp %>*1000);
+        item.innerHTML = d.toString();
         async function addToMetamask(){
             console.log(window.ethereum != undefined);
             if(window.ethereum != undefined){
