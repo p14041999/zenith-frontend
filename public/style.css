@@ -18,3 +18,12 @@ a{
         display: none!important;
     }
 }
+.type-in{
+    background-color: #bdffb7;
+    color: #00aa00;
+    /* width:100%; */
+}
+.type-out{
+    background-color: #ffe8b7;
+    color: #aa7400;
+}

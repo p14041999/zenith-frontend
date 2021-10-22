@@ -104,12 +104,35 @@
                                         <td>
                                             <a href="/tx/<%=tx[i].hash%>" style="text-decoration: none;"><%= tx[i].hash.substr(0,15)%></a>...
                                         </td>
+                                        <td>
+                                            <%if(address.address == tx[i].from ){%>
+                                                <div class="px-3 py-2 type-out w-100 text-center">
+                                                    OUT
+                                                </div>
+                                            <%}%>
+                                            <%if(address.address == tx[i].to ){%>
+                                                <div class="px-3 py-2 type-in w-100 text-center">
+                                                    IN
+                                                </div>
+                                            <%}%>
+                                            <%if(address.address == tx[i].contractAddress ){%>
+                                                <div class="px-3 py-2 type-in w-100 text-center">
+                                                    IN
+                                                </div>
+                                            <%}%>
+                                        </td>
                                         <td class="text-start">
-                                            from <a href="/address/<%=tx[i].from%>" style="text-decoration: none;"><%= tx[i].from.substr(0,15) %>...</a> <br/>
+                                            <%if(address.address != tx[i].from ){%>
+                                                from <a href="/address/<%=tx[i].from%>" style="text-decoration: none;"><%= tx[i].from.substr(0,15) %>...</a> <br/>
+                                            <%}%>
                                             <%if(tx[i].to == null){%>
-                                                to <a href="/address/<%=tx[i].contractAddress%>" style="text-decoration: none;"><%= tx[i].contractAddress.substr(0,15) %>...</a>
+                                                <%if(address.address != tx[i].contractAddress ){%>
+                                                    to <a href="/address/<%=tx[i].contractAddress%>" style="text-decoration: none;"><%= tx[i].contractAddress.substr(0,15) %>...</a>
+                                                <%}%>
                                             <% }else{%>
-                                                to <a href="/address/<%=tx[i].to%>" style="text-decoration: none;"><%=tx[i].to.substr(0,15) %>...</a>
+                                                <%if(address.address != tx[i].to ){%>
+                                                    to <a href="/address/<%=tx[i].to%>" style="text-decoration: none;"><%=tx[i].to.substr(0,15) %>...</a>
+                                                <%}%>
                                             <%}%>
                                         </td>
                                         <td>
