@@ -28,29 +28,30 @@ router.get('/',async (req,res)=>{
 })
 router.get('/address/:address',async (req,res)=>{
     try{
-        let valid = helper.isValidAddress(req.params.address);
+        let addr = req.params.address.toLowerCase();
+        let valid = helper.isValidAddress(addr);
         if(valid){
-            let isContract = await helper.isContract(req.params.address);
+            let isContract = await helper.isContract(addr);
             if(isContract){
-                let address = await Address.findOne({address:req.params.address}).populate('transactions').lean();
-                let contract = await Contract.findOne({address:req.params.address});
+                let address = await Address.findOne({address:addr}).populate('transactions').lean();
+                let contract = await Contract.findOne({address:addr});
                 let balance = await helper.getBalance(address.address);
                 // Render Contract Page
                 res.render('contract',{address,type:"Contract",contract,balance,rate:0.2});
             }else{
-                let address = await Address.findOne({address:req.params.address}).populate('transactions');
+                let address = await Address.findOne({address:addr}).populate('transactions');
                 // console.log(address);
                 if(address){
 
-                    let balance = await helper.getBalance(req.params.address);
+                    let balance = await helper.getBalance(addr);
                     // Render Contract Page
                     res.render('address',{address,type:"Address",balance,rate:0.3});
                 }else{
-                    let balance = await helper.getBalance(req.params.address);
+                    let balance = await helper.getBalance(addr);
                     res.render('address',{address:{
-                        address:req.params.address,
+                        address:addr,
                         transactions:[]
-                    },type:"Address",balance,rate:0.2});
+                    },type:"Address",balance,rate:0.3});
                 }
                 // Render Address Page
                 // res.send("It's a address");
