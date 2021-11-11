@@ -22,7 +22,7 @@ router.get('/',async (req,res)=>{
         last10Bk:blocks,
         last10Txn:txns,
         holders:address,
-        price:0.2
+        price:0.3
     }
     res.render('index',stat);
 })
@@ -44,7 +44,7 @@ router.get('/address/:address',async (req,res)=>{
 
                     let balance = await helper.getBalance(req.params.address);
                     // Render Contract Page
-                    res.render('address',{address,type:"Address",balance,rate:0.2});
+                    res.render('address',{address,type:"Address",balance,rate:0.3});
                 }else{
                     let balance = await helper.getBalance(req.params.address);
                     res.render('address',{address:{
@@ -85,7 +85,7 @@ router.get('/block/:number',async (req,res)=>{
 router.get('/tx/:hash',async (req,res)=>{
     try{
         // Search for block
-        let rate = 0.2
+        let rate = 0.3
         let txns = await Transaction.findOne({hash:req.params.hash});
         let currentBlock = await helper.currentBlock();
         let tknTransfers = await TokenTransfer.find({transactionHash:req.params.hash})
