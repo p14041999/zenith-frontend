@@ -7,7 +7,7 @@ const TokenTransfer = require('../models/tokenTransaction');
 const Address = require('../models/address');
 const Contract = require('../models/contract');
 const Web3 = require('web3');
-
+const zenithPrice = 0.34
 const web3 =new Web3(process.env.RPC_URL);
 router.get('/',async (req,res)=>{
     let txnCount = await Transaction.count()
@@ -22,7 +22,7 @@ router.get('/',async (req,res)=>{
         last10Bk:blocks,
         last10Txn:txns,
         holders:address,
-        price:0.3
+        price:zenithPrice
     }
     res.render('index',stat);
 })
@@ -37,7 +37,7 @@ router.get('/address/:address',async (req,res)=>{
                 let contract = await Contract.findOne({address:addr});
                 let balance = await helper.getBalance(address.address);
                 // Render Contract Page
-                res.render('contract',{address,type:"Contract",contract,balance,rate:0.2});
+                res.render('contract',{address,type:"Contract",contract,balance,rate:zenithPrice});
             }else{
                 let address = await Address.findOne({address:addr}).populate('transactions');
                 // console.log(address);
@@ -45,13 +45,13 @@ router.get('/address/:address',async (req,res)=>{
 
                     let balance = await helper.getBalance(addr);
                     // Render Contract Page
-                    res.render('address',{address,type:"Address",balance,rate:0.3});
+                    res.render('address',{address,type:"Address",balance,rate:zenithPrice});
                 }else{
                     let balance = await helper.getBalance(addr);
                     res.render('address',{address:{
                         address:addr,
                         transactions:[]
-                    },type:"Address",balance,rate:0.3});
+                    },type:"Address",balance,rate:zenithPrice});
                 }
                 // Render Address Page
                 // res.send("It's a address");
@@ -86,7 +86,7 @@ router.get('/block/:number',async (req,res)=>{
 router.get('/tx/:hash',async (req,res)=>{
     try{
         // Search for block
-        let rate = 0.3
+        let rate = zenithPrice
         let txns = await Transaction.findOne({hash:req.params.hash});
         let currentBlock = await helper.currentBlock();
         let tknTransfers = await TokenTransfer.find({transactionHash:req.params.hash})
