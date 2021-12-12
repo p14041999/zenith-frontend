@@ -27,3 +27,12 @@ a{
     background-color: #ffe8b7;
     color: #aa7400;
 }
+.top-section{
+    display: flex;
+    justify-content: start;
+}
+.copy-button{
+    border: 2px solid blue;
+    background-color: #00000000;
+    color:blue;
+}

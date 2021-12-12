@@ -7,7 +7,7 @@ const TokenTransfer = require('../models/tokenTransaction');
 const Address = require('../models/address');
 const Contract = require('../models/contract');
 const Web3 = require('web3');
-const zenithPrice = 0.37
+// const zenithPrice = 0.37
 const web3 =new Web3(process.env.RPC_URL);
 router.get('/',async (req,res)=>{
     let txnCount = await Transaction.count()
@@ -15,6 +15,7 @@ router.get('/',async (req,res)=>{
     let txns = await Transaction.find().sort({timestamp:-1}).limit(10);
     let blocks = await Block.find().sort({ timestamp: -1 }).limit(10);
     let currentBlock = await helper.currentBlock();
+    let priceData = await helper.getRate();
     // console.log(blocks); 
     let stat={
         totalTx:txnCount,
@@ -22,22 +23,24 @@ router.get('/',async (req,res)=>{
         last10Bk:blocks,
         last10Txn:txns,
         holders:address,
-        price:zenithPrice
+        price:priceData.price
     }
     res.render('index',stat);
 })
 router.get('/address/:address',async (req,res)=>{
     try{
+        let priceData = await helper.getRate();
         let addr = req.params.address.toLowerCase();
         let valid = helper.isValidAddress(addr);
         if(valid){
             let isContract = await helper.isContract(addr);
             if(isContract){
                 let address = await Address.findOne({address:addr}).populate('transactions').lean();
-                let contract = await Contract.findOne({address:addr});
+                let contract = await Contract.findOne({address:helper.getChecksumAddress(addr)});
                 let balance = await helper.getBalance(address.address);
                 // Render Contract Page
-                res.render('contract',{address,type:"Contract",contract,balance,rate:zenithPrice});
+                console.log(contract);
+                res.render('contract',{address,type:"Contract",contract,balance,rate:priceData.price});
             }else{
                 let address = await Address.findOne({address:addr}).populate('transactions');
                 // console.log(address);
@@ -45,13 +48,13 @@ router.get('/address/:address',async (req,res)=>{
 
                     let balance = await helper.getBalance(addr);
                     // Render Contract Page
-                    res.render('address',{address,type:"Address",balance,rate:zenithPrice});
+                    res.render('address',{address,type:"Address",balance,rate:priceData.price});
                 }else{
                     let balance = await helper.getBalance(addr);
                     res.render('address',{address:{
                         address:addr,
                         transactions:[]
-                    },type:"Address",balance,rate:zenithPrice});
+                    },type:"Address",balance,rate:priceData.price});
                 }
                 // Render Address Page
                 // res.send("It's a address");
@@ -86,7 +89,8 @@ router.get('/block/:number',async (req,res)=>{
 router.get('/tx/:hash',async (req,res)=>{
     try{
         // Search for block
-        let rate = zenithPrice
+        let price = await helper.getRate();
+        let rate = price.price
         let txns = await Transaction.findOne({hash:req.params.hash});
         let currentBlock = await helper.currentBlock();
         let tknTransfers = await TokenTransfer.find({transactionHash:req.params.hash})
@@ -142,5 +146,19 @@ router.post('/search',async (req,res)=>{
     }
 })
 
+router.get('/validators',async (req,res)=>{
+    try {
+        let stat = await helper.getValidatorStatus();
+        // stat = stat;
+        var result = []
+        Object.keys(stat.sealerActivity).map((key) => {
+            result.push([key,stat.sealerActivity[key]]);
+        });
+        // console.log(result);
+        res.render('validators',{stats:result});
+    } catch (error) {
+        
+    }
+});
 
 module.exports = router;
