@@ -60,7 +60,8 @@ class Helper{
     }
     async getRate(){
       let result = await axios.get('https://api.coingecko.com/api/v3/coins/zenith-chain?localization=false&tickers=true');
-      return {price:result.data.market_data.current_price.usd,change:result.data.market_data.price_change_24h,percent:result.data.market_data.price_change_percentage_24h};
+      //console.log(result.data.market_data.total_volume.usd);
+      return {price:result.data.market_data.current_price.usd,change:result.data.market_data.price_change_24h,percent:result.data.market_data.price_change_percentage_24h, volume:result.data.market_data.total_volume.usd};
     }
 }
 module.exports = Helper;
