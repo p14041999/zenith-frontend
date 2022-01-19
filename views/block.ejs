@@ -5,134 +5,324 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/explorer.css">
     <link rel="stylesheet" href="/css/all.min.css">
-    <title>Zenith Scan - Powered by Code Partner</title>
+    <title>Zenith Explorer - Powered by Code Partner</title>
     <link rel="shortcut icon" href="/logo.png" type="image/x-icon">
     <link rel="icon" href="/logo.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600;700&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
+        rel="stylesheet">
 </head>
 <body>
-    <nav class="container-fluid bg-light py-3">
-        <div class="container d-flex justify-content-between align-items-center">
-          <a class="navbar-brand d-flex align-items-center" href="/" style="cursor: pointer;">
-            <svg height="30" viewBox="0 0 40 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M32.09 45.7802H7.95C6.56621 45.7789 5.21689 45.3484 4.08794 44.5482C2.959 43.748 2.10597 42.6173 1.64639 41.3121C1.18681 40.0068 1.1433 38.5912 1.52183 37.2602C1.90037 35.9292 2.68234 34.7483 3.76 33.8802L33.68 9.83024C34.3454 9.3165 34.832 8.6062 35.0707 7.80021C35.3095 6.99421 35.2882 6.13348 35.01 5.34024C34.736 4.54973 34.2211 3.86503 33.5376 3.38249C32.8542 2.89994 32.0366 2.64385 31.2 2.65024H7.65C6.32392 2.65024 5.05215 3.17702 4.11447 4.1147C3.17678 5.05238 2.65 6.32415 2.65 7.65024C2.65 8.97632 3.17678 10.2481 4.11447 11.1858C5.05215 12.1235 6.32392 12.6502 7.65 12.6502H8.4C8.73154 12.6791 9.04023 12.8311 9.26512 13.0764C9.49002 13.3217 9.61478 13.6424 9.61478 13.9752C9.61478 14.308 9.49002 14.6287 9.26512 14.874C9.04023 15.1193 8.73154 15.2714 8.4 15.3002H7.65C5.62109 15.3002 3.67529 14.4943 2.24063 13.0596C0.80598 11.625 0 9.67914 0 7.65024C0 5.62133 0.80598 3.67552 2.24063 2.24087C3.67529 0.806216 5.62109 0.000236674 7.65 0.000236674H31.15C32.5379 -0.0115053 33.8943 0.413937 35.0269 1.21625C36.1594 2.01856 37.0107 3.15702 37.46 4.47024C37.9275 5.7749 37.9745 7.19326 37.5942 8.52598C37.2139 9.85869 36.4256 11.0387 35.34 11.9002L5.42 36.0002C4.74722 36.513 4.25431 37.2258 4.0121 38.0363C3.76989 38.8468 3.79085 39.7132 4.07198 40.511C4.3531 41.3088 4.87991 41.997 5.57671 42.4766C6.2735 42.9562 7.1044 43.2025 7.95 43.1802H32.09C33.4161 43.1802 34.6879 42.6535 35.6255 41.7158C36.5632 40.7781 37.09 39.5063 37.09 38.1802C37.09 36.8542 36.5632 35.5824 35.6255 34.6447C34.6879 33.707 33.4161 33.1802 32.09 33.1802H30.68C30.3485 33.1514 30.0398 32.9993 29.8149 32.754C29.59 32.5087 29.4652 32.188 29.4652 31.8552C29.4652 31.5224 29.59 31.2017 29.8149 30.9564C30.0398 30.7111 30.3485 30.5591 30.68 30.5302H32.09C34.1163 30.5302 36.0595 31.3352 37.4923 32.7679C38.9251 34.2007 39.73 36.144 39.73 38.1702C39.73 40.1965 38.9251 42.1398 37.4923 43.5725C36.0595 45.0053 34.1163 45.8102 32.09 45.8102" fill="currentColor"/>
-                <path d="M3.70995 27.5302C3.51657 27.5265 3.32645 27.4797 3.15346 27.3932C2.98046 27.3067 2.82894 27.1827 2.70995 27.0302C2.60116 26.8945 2.52027 26.7386 2.47192 26.5715C2.42358 26.4044 2.40874 26.2294 2.42826 26.0566C2.44777 25.8837 2.50126 25.7164 2.58564 25.5643C2.67002 25.4122 2.78364 25.2783 2.91995 25.1702L23.27 9.00022H12.01C11.8336 8.99893 11.6592 8.96259 11.497 8.89329C11.3349 8.82399 11.1881 8.72312 11.0652 8.59656C10.9424 8.47 10.846 8.32027 10.7815 8.15609C10.7171 7.9919 10.686 7.81654 10.69 7.64022C10.7025 7.29507 10.8459 6.96763 11.0911 6.72434C11.3362 6.48105 11.6647 6.34015 12.01 6.33022H23.31C23.8281 6.32496 24.3366 6.47061 24.7734 6.74939C25.2102 7.02817 25.5565 7.42803 25.77 7.90022C26.0094 8.42728 26.0647 9.01957 25.9269 9.58185C25.789 10.1441 25.4661 10.6437 25.01 11.0002L4.53995 27.2402C4.30266 27.4254 4.01097 27.5274 3.70995 27.5302Z" fill="currentColor"/>
-                <path d="M27.0099 39.4102H15.6099C15.0692 39.4037 14.5436 39.2301 14.1055 38.9131C13.6673 38.596 13.338 38.1512 13.1627 37.6396C12.9874 37.1279 12.9747 36.5746 13.1264 36.0555C13.2781 35.5364 13.5867 35.0769 14.0099 34.7402L34.4499 18.5002C34.5859 18.3925 34.7417 18.3126 34.9084 18.2652C35.0752 18.2177 35.2497 18.2035 35.422 18.2235C35.5942 18.2435 35.7609 18.2972 35.9124 18.3815C36.0639 18.4659 36.1973 18.5793 36.3049 18.7152C36.4126 18.8511 36.4925 19.0069 36.54 19.1737C36.5874 19.3405 36.6016 19.515 36.5816 19.6872C36.5617 19.8595 36.508 20.0261 36.4236 20.1776C36.3392 20.3291 36.2259 20.4625 36.0899 20.5702L15.6999 36.7602H27.0099C27.1936 36.7442 27.3786 36.7666 27.5532 36.8259C27.7277 36.8853 27.8881 36.9803 28.024 37.1048C28.1599 37.2294 28.2684 37.3809 28.3426 37.5497C28.4168 37.7185 28.4552 37.9008 28.4552 38.0852C28.4552 38.2696 28.4168 38.4519 28.3426 38.6207C28.2684 38.7894 28.1599 38.9409 28.024 39.0655C27.8881 39.1901 27.7277 39.2851 27.5532 39.3444C27.3786 39.4038 27.1936 39.4262 27.0099 39.4102Z" fill="currentColor"/>
-            </svg>   
-            <span class="ms-3 desktop-only">Zenith Scan</span>             
-          </a>
-          <ul class="d-flex mb-0 align-items-center">
-            <li class="nav-item mr-4 desktop-only">
-                <button class="btn btn-light border-1 shadow rounded-0 px-3 me-3 d-flex align-items-center" onclick="addToMetamask()">
-                    <img src="/metamask.svg" width="20" alt="metamask" class="me-2" /> Add to Metamask
-                </button>
-            </li>
-            <li class="nav-item mr-4">
-                <a class="btn btn-light border-1 shadow rounded-0 px-3 d-flex align-items-center" target="_blank" href="https://bridge.zenithchain.co">
-                    <img src="/logo.svg" width="20" alt="metamask" class="me-2" /> Zenith Bridge</a>
-            </li>
-            </ul>
-        </div>
-      </nav>
-      <!-- Latest Data Area -->
-      <div class="container mt-5">
-            <div class="top-section">
-                <h4 class="text-secondary pb-4">Block </h4>
-                <p class="ms-3 mb-0"><span class="desktop-only">#<%= block.number %></span></p>
-                <div class="ms-3">
-                    <button class="copy-button py-1" id="copy-button" onclick="copyToClipboard()">
-                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+    <!--Nav bar start-->
+    <div class="container-fluid p-0 navbarContainer">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-expand-lg navbar-light mx-auto max980">
+                    <a class="navbar-brand" href="#">
+                        <img class="navbarlogo" src="/logo_index.png" style="width: 40px;">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
                     </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                        <ul class="navbar-nav font-semi color-white">
+                            <li class="nav-item">
+                                <button class="btn zenBtn  d-flex"
+                                    onclick="addToMetamask();">
+                                    <img src="/metamasklogo.png">
+                                    <div class="texty ml-2"> Add to MetaMask</div>
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="btn zenBtn " onclick="location.href='https://ico.zenithchain.co/'">
+                                    <div class="texty">Zenith Bridge</div>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!--Nav bar end-->
+    <!--Block start-->
+    <div class="container-fluid p-0 blocksdiv">
+        <div class="row max980 pl-3 pr-3 pl-lg-0 pr-lg-0" style="align-items: center;">
+            <div class="col-12">
+                <div class="d-flex" style="align-items: center; justify-content: space-between;">
+                    <h4 class="m-0">Block<span>#<%= block.number %></span></h4>
+                    <div class="pageNav">
+                        <button class="btn pageBtn disabled">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="9" height="14" fill="none"
+                                viewBox="0 0 9 14">
+                                <path fill="#50298A" d="M7.266 14l-7-7 7-7L9 1.734 3.734 7 9 12.266 7.266 14z" />
+                            </svg>
+                        </button>
+                        <div class="currentPage">Block #157680</div>
+                        <button class="btn pageBtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="9" height="14" fill="none"
+                                viewBox="0 0 9 14">
+                                <path fill="#50298A" d="M1.734 14l7-7-7-7L0 1.734 5.266 7 0 12.266 1.734 14z" />
+                            </svg>
+
+                        </button>
+                    </div>
+                </div>
+                <table class="table mb-0">
+                    <tbody>
+                        <tr>
+                            <td style="width: 200px;">
+                                Block Height:
+                            </td>
+                            <td class="text-start"><%= block.number.toLocaleString('en-US') %></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 200px;">
+                                Timestamp:
+                            </td>
+                            <td class="text-start" id="item">
+                                <% let d = new Date(block.timestamp*1000) %>
+                                <%= d.toString() %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 200px;">
+                                Transactions:
+                            </td>
+                            <td class="text-start"><%= block.transactions.length %> transactions</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 200px;">
+                                Difficulty:
+                            </td>
+                            <td class="text-start"><%= block.difficulty %></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 200px;">
+                                Size:
+                            </td>
+                            <td class="text-start"><%= block.size.toLocaleString('en-US') %> bytes</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 200px;">
+                                Gas Used:
+                            </td>
+                            <td class="text-start">
+                                <%= block.gasUsed.toLocaleString('en-US') %> (<%= Math.round(block.gasUsed/block.gasLimit*100) %>%)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 200px;">
+                                Gas Limit:
+                            </td>
+                            <td class="text-start">
+                                <%= block.gasLimit.toLocaleString('en-US') %>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="width: 200px;">
+                                Hash:
+                            </td>
+                            <td class="text-start">
+                                <%= block.hash %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 200px;">
+                                Parent Hash:
+                            </td>
+                            <td class="text-start">
+                                <%= block.parentHash %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 200px;">
+                                Nonce:
+                            </td>
+                            <td class="text-start"><%= block.nonce %></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 200px;">
+                                Total Difficulty:
+                            </td>
+                            <td class="text-start"><%= Number(block.totalDifficulty).toLocaleString('en-US') %></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--Block end-->
+      <!--Footer start-->
+      <div class="container-fluid p-0 footer" data-aos="fade-in" data-aos-duration="1800" data-aos-offset="80">
+        <div class="row max980 lsection mt-0" data-aos="fade-in" data-aos-delay="400">
+            <div class="col-12 col-lg-4" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="400"
+                data-aos-offset="60">
+                <img src="assets/images/footerlogo.png">
+                <div class="mt-4 pt-4">
+                    <div class="d-flex align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="none" viewBox="0 0 20 16">
+                            <path fill="url(#paint0_linear_71:187)"
+                                d="M19.286 0H.714A.703.703 0 000 .693v13.853c0 .383.32.692.714.692h18.572c.395 0 .714-.31.714-.692V.693A.703.703 0 0019.286 0zm-1.804 2.357L10.44 7.671a.491.491 0 01-.592 0L2.804 2.357a.151.151 0 01-.054-.174.156.156 0 01.058-.076.164.164 0 01.094-.03h14.482c.034 0 .066.011.093.03a.151.151 0 01.06.172.155.155 0 01-.055.078z" />
+                            <defs>
+                                <linearGradient id="paint0_linear_71:187" x1=".001" x2="20" y1="7.619" y2="7.619"
+                                    gradientUnits="userSpaceOnUse">
+                                    <stop offset=".01" stop-color="#FFF7A6" />
+                                    <stop offset=".247" stop-color="#FDF19B" />
+                                    <stop offset=".247" stop-color="#FEF59C" />
+                                    <stop offset=".703" stop-color="#EDB556" />
+                                    <stop offset="1" stop-color="#FFF594" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <div class="ml-3">
+                            <a href="mailto:info@zenithchain.co" class="color-white">
+                                info@zenithchain.co
+                            </a>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mt-2">
+                        <svg class="ml-1" width="18" height="23" fill="none" viewBox="0 0 18 23">
+                            <path fill="url(#paint0_linear_71:191)"
+                                d="M9 0a9.01 9.01 0 00-9 9 8.91 8.91 0 001.813 5.4s.246.323.286.37L9 22.91l6.905-8.144c.036-.044.282-.366.282-.366v-.002A8.906 8.906 0 0018 9a9.01 9.01 0 00-9-9zm0 12.273a3.273 3.273 0 110-6.546 3.273 3.273 0 010 6.546z" />
+                            <defs>
+                                <linearGradient id="paint0_linear_71:191" x1=".001" x2="18" y1="11.455" y2="11.455"
+                                    gradientUnits="userSpaceOnUse">
+                                    <stop offset=".01" stop-color="#FFF7A6" />
+                                    <stop offset=".247" stop-color="#FDF19B" />
+                                    <stop offset=".247" stop-color="#FEF59C" />
+                                    <stop offset=".703" stop-color="#EDB556" />
+                                    <stop offset="1" stop-color="#FFF594" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <div class="ml-3 color-white">vytauto str33, Vilnius Lithuania</div>
+                    </div>
+                    <div class="mt-3 pt-4 color-white">BSC Contract Address:<br>
+                        0x57C81885FaAd67fC4dE892102f6FEAd3b9215f6b</div>
+                    <div class="mt-2 pt-1 color-white">ERC Contract Address:<br>
+                        0x0343131c0257ac21ea5a8dc83841f071efd9285c
+                    </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-header">
-                    <p class="card-title mb-0">Overview</p>
-                </div>
-                <div class="card-body p-0 mb-0" style="overflow-x: scroll;">
-                    <table class="table table-hover mb-0">
-                        <tbody>
-                            <tr>
-                                <td style="width: 200px;">
-                                    Block Height:
-                                </td>
-                                <td class="text-start"><%= block.number.toLocaleString('en-US') %></td>
-                            </tr>
-                            <tr>
-                                <td style="width: 200px;">
-                                    Timestamp:
-                                </td>
-                                <td class="text-start" id="item">
-                                    <% let d = new Date(block.timestamp*1000) %>
-                                    <%= d.toString() %>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width: 200px;">
-                                    Transactions:
-                                </td>
-                                <td class="text-start"><%= block.transactions.length %> transactions</td>
-                            </tr>
-                            <tr>
-                                <td style="width: 200px;">
-                                    Difficulty:
-                                </td>
-                                <td class="text-start"><%= block.difficulty %></td>
-                            </tr>
-                            <tr>
-                                <td style="width: 200px;">
-                                    Size:
-                                </td>
-                                <td class="text-start"><%= block.size.toLocaleString('en-US') %> bytes</td>
-                            </tr>
-                            <tr>
-                                <td style="width: 200px;">
-                                    Gas Used:
-                                </td>
-                                <td class="text-start"><%= block.gasUsed.toLocaleString('en-US') %> (<%= Math.round(block.gasUsed/block.gasLimit*100) %>%)</td>
-                            </tr>
-                            <tr>
-                                <td style="width: 200px;">
-                                    Gas Limit:
-                                </td>
-                                <td class="text-start"><%= block.gasLimit.toLocaleString('en-US') %></td>
-                            </tr>
-                            
-                            <tr>
-                                <td style="width: 200px;">
-                                    Hash:
-                                </td>
-                                <td class="text-start"><%= block.hash %></td>
-                            </tr>
-                            <tr>
-                                <td style="width: 200px;">
-                                    Parent Hash:
-                                </td>
-                                <td class="text-start"><%= block.parentHash %></td>
-                            </tr>
-                            <tr>
-                                <td style="width: 200px;">
-                                    Nonce:
-                                </td>
-                                <td class="text-start"><%= block.nonce %></td>
-                            </tr>
-                            <tr>
-                                <td style="width: 200px;">
-                                    Total Difficulty:
-                                </td>
-                                <td class="text-start"><%= Number(block.totalDifficulty).toLocaleString('en-US') %></td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
-                </div>
+            <div class="col-12 col-md-4 col-lg-2 mt-4 mt-lg-0" data-aos="fade-up" data-aos-duration="1200"
+                data-aos-delay="500" data-aos-offset="60">
+                <h5 class="color-white">Products</h5>
+                <ul>
+                    <li><a href="https://ico.zenithchain.co/">Zenith Coin</a></li>
+                    <li><a href="https://www.zenithchain.co/comingsoon">Zenith Pay</a></li>
+                    <li><a href="https://www.zenithchain.co/comingsoon">Zenith Exchange</a></li>
+                    <li> <a href="https://explorer.zenithchain.co/">Block Explorer</a></li>
+                </ul>
             </div>
-      </div>
-      <!-- Latest Data Area Ends Here -->
-      <div class="hero-section py-5 text-light mt-5 text-center">
-          <span class="text-center">Copyright &copy; 2020-2021 Zenith Chain (UAB) Ltd Reg No. 305865705. All rights reserved</span>
-      </div>
+            <div class="col-12 col-md-4 col-lg-3 mt-4 mt-lg-0" data-aos="fade-up" data-aos-duration="1200"
+                data-aos-delay="600" data-aos-offset="60">
+                <h5 class="color-white">For Businesses</h5>
+                <ul>
+                    <li><a href="https://www.zenithchain.co/comingsoon">Zenith Exchange API</a></li>
+                    <li><a href="https://www.zenithchain.co/comingsoon">Zenith Wallet API</a></li>
+                </ul>
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 mt-4 mt-lg-0" data-aos="fade-up" data-aos-duration="1200"
+                data-aos-delay="700" data-aos-offset="60">
+                <h5 class="color-white">For Developer</h5>
+                <ul>
+                    <li><a href="https://docs.zenithchain.co/docs/">Zenith Chain API</a></li>
+                    <li><a href="https://docs.zenithchain.co/docs">Documentation</a></li>
+                    <li><a href="https://docs.zenithchain.co/docs/zrc-token-specification">Smart Contract Specs</a>
+                    </li>
+                    <li><a href="https://docs.zenithchain.co/docs/connecting-metamask-to-zenith-chian">Connect to
+                            Metamask</a></li>
+                    <li><a href="https://docs.zenithchain.co/docs/zrc-token-specification">ZRC Token Specifications</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row max980">
+            <div class="col-12 pt-4 pb-4 text-center" data-aos="flip-down" data-aos-duration="1200"
+                data-aos-offset="50">
+                <h5 class="color-white font18" style="font-weight: 400;">Connect with us</h5>
+                <div class="d-flex socialicons">
+                    <!-- telegram -->
+                    <a href="https://t.me/zenithchainenglish" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 32 32">
+                            <path fill="#fff" fill-rule="evenodd"
+                                d="M32 16c0 8.836-7.164 16-16 16S0 24.836 0 16 7.164 0 16 0s16 7.164 16 16zm-15.427-4.188c-1.556.647-4.666 1.987-9.33 4.019-.758.301-1.155.596-1.191.884-.061.488.55.68 1.379.94.113.036.23.072.35.112.818.265 1.916.576 2.487.588.519.01 1.097-.203 1.736-.64 4.357-2.943 6.607-4.43 6.748-4.462.1-.022.239-.052.332.032.093.083.084.24.075.283-.062.257-2.454 2.483-3.694 3.635-.386.358-.66.613-.716.672-.125.129-.253.253-.376.372-.76.73-1.328 1.28.032 2.176.654.43 1.176.786 1.698 1.141.569.388 1.137.775 1.873 1.257.187.123.365.25.54.374.663.473 1.259.897 1.995.83.426-.04.869-.441 1.093-1.64.53-2.834 1.572-8.973 1.813-11.504.015-.21.006-.42-.026-.629a.675.675 0 00-.23-.433c-.19-.156-.486-.19-.62-.187-.601.01-1.524.332-5.968 2.18z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <!-- twitter -->
+                    <a href="https://twitter.com/zenithchain_co" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 32 32">
+                            <path fill="#fff"
+                                d="M16 0C7.163 0 0 7.163 0 16s7.163 16 16 16 16-7.163 16-16S24.837 0 16 0zm6.508 13.107c.007.136.009.273.009.406 0 4.167-3.169 8.969-8.965 8.969a8.892 8.892 0 01-4.83-1.417c.245.03.496.042.751.042a6.312 6.312 0 003.914-1.349 3.159 3.159 0 01-2.944-2.186c.472.09.958.07 1.422-.055a3.153 3.153 0 01-2.528-3.09v-.039a3.16 3.16 0 001.428.395 3.15 3.15 0 01-.975-4.21 8.96 8.96 0 006.495 3.295 3.152 3.152 0 015.37-2.875 6.326 6.326 0 002-.765 3.166 3.166 0 01-1.385 1.745 6.331 6.331 0 001.81-.498 6.39 6.39 0 01-1.572 1.632z" />
+                        </svg>
+                    </a>
+                    <!-- reditt-->
+                    <a href="https://www.reddit.com/r/zenithchain_co/" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 32 32">
+                            <path fill="#fff" fill-rule="evenodd"
+                                d="M32 16c0 8.836-7.164 16-16 16S0 24.836 0 16 7.164 0 16 0s16 7.164 16 16zm-5.75-1.256c.26.37.406.805.422 1.256a2.334 2.334 0 01-1.296 2.128c.019.235.019.47 0 .704 0 3.584-4.176 6.496-9.328 6.496-5.152 0-9.328-2.912-9.328-6.496a4.593 4.593 0 010-.704 2.333 2.333 0 112.576-3.824 11.424 11.424 0 016.24-1.968l1.184-5.552a.495.495 0 01.592-.384l3.92.784a1.6 1.6 0 11-.208.976L17.6 7.44l-1.04 4.992c2.2.047 4.34.73 6.16 1.968a2.335 2.335 0 013.53.344zm-15.309 1.967a1.6 1.6 0 102.66 1.777 1.6 1.6 0 00-2.66-1.777zm5.075 6.521c1.42.059 2.817-.312 3.952-1.168a.447.447 0 10-.624-.64A5.248 5.248 0 0116 22.4a5.232 5.232 0 01-3.328-1.008.432.432 0 00-.608.608 6.145 6.145 0 003.952 1.232zm2.775-4.237c.264.176.557.333.873.333a1.598 1.598 0 001.616-1.664 1.6 1.6 0 10-2.49 1.33z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <!--medium -->
+                    <a href="https://medium.com/@zenithchain" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 32 32">
+                            <path fill="#fff"
+                                d="M16 0C7.164 0 0 7.164 0 16s7.164 16 16 16 16-7.164 16-16S24.836 0 16 0zm9.143 9.06l-1.457 1.397a.423.423 0 00-.165.407V21.14a.417.417 0 00.165.407l1.428 1.397v.31h-7.171v-.296l1.475-1.432c.146-.146.146-.19.146-.407v-8.314l-4.107 10.414h-.553l-4.779-10.414v6.982a.95.95 0 00.268.8l1.921 2.325v.31H6.857v-.31l1.922-2.325a.932.932 0 00.25-.8v-8.072a.692.692 0 00-.233-.596L7.09 9.06V8.75h5.304l4.093 8.982 3.603-8.975h5.054v.304z" />
+                        </svg>
+                    </a>
+                    <!-- github-->
+                    <a href="https://github.com/jezenith/Zenith-Chain" target="_blank">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" fill="none" viewBox="0 0 33 32">
+                            <path fill="#fff" fill-rule="evenodd"
+                                d="M16.405 0C7.344 0 0 7.344 0 16.405c0 7.247 4.7 13.397 11.219 15.568.82.148 1.117-.357 1.117-.791 0-.39-.013-1.423-.018-2.79-4.565.99-5.528-2.2-5.528-2.2-.744-1.895-1.821-2.4-1.821-2.4-1.489-1.018.113-.995.113-.995 1.648.115 2.512 1.69 2.512 1.69 1.464 2.507 3.842 1.783 4.773 1.364.15-1.06.577-1.785 1.044-2.194-3.641-.413-7.47-1.82-7.47-8.109 0-1.788.64-3.255 1.684-4.4-.166-.416-.733-2.085.163-4.342 0 0 1.377-.442 4.51 1.68a15.761 15.761 0 014.105-.553c1.387.002 2.768.188 4.106.552 3.135-2.123 4.51-1.679 4.51-1.679.896 2.257.334 3.926.163 4.342 1.052 1.145 1.684 2.61 1.684 4.4 0 6.304-3.832 7.69-7.487 8.096.584.506 1.11 1.506 1.11 3.036 0 2.194-.02 3.964-.02 4.502 0 .439.293.949 1.13.788 6.517-2.175 11.211-8.32 11.211-15.565C32.81 7.344 25.466 0 16.405 0z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <!--linekdin-->
+                    <a href="https://www.linkedin.com/company/zenith-chain" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" fill="none" viewBox="0 0 33 32">
+                            <path fill="#fff"
+                                d="M16.81 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zm-3.917 22.632h-3.24V12.205h3.24v10.427zm-1.64-11.707c-1.023 0-1.685-.725-1.685-1.622 0-.915.682-1.618 1.727-1.618S12.98 8.388 13 9.303c0 .897-.66 1.622-1.747 1.622zm13.474 11.707h-3.24v-5.779c0-1.345-.47-2.258-1.642-2.258-.895 0-1.427.618-1.662 1.213-.086.212-.108.512-.108.81v6.012h-3.242v-7.1c0-1.302-.041-2.39-.085-3.327h2.815l.149 1.449h.065c.426-.68 1.471-1.684 3.22-1.684 2.131 0 3.73 1.429 3.73 4.499v6.165z" />
+                        </svg>
+                    </a>
+                    <!-- facebook -->
+                    <a href="https://www.facebook.com/groups/zenithchain/?ref=share" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 32 32">
+                            <path fill="url(#paint0_linear_202:3)" fill-rule="evenodd"
+                                d="M0 16.09C0 24.043 5.777 30.658 13.333 32V20.444h-4V16h4v-3.556c0-4 2.578-6.221 6.223-6.221 1.155 0 2.4.177 3.555.354v4.09h-2.044c-1.956 0-2.4.977-2.4 2.222V16h4.266l-.71 4.444h-3.556V32C26.223 30.659 32 24.045 32 16.09 32 7.24 24.8 0 16 0S0 7.24 0 16.09z"
+                                clip-rule="evenodd" />
+                            <defs>
+                                <linearGradient id="paint0_linear_202:3" x1="0" x2="32.376" y1="32" y2="31.22"
+                                    gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#fff" />
+                                    <stop offset="1" stop-color="#F4F4F4" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-12 copyright text-center" data-aos="fade-in" data-aos-offset="0" data-aos-delay="400">
+                Copyright 2020-2021 Zenith Chain (UAB) Ltd Reg No. 305865705. All rights reserved
+            </div>
+        </div>
+    </div>
+      <!--Footer end-->
     <!-- Scripts -->
     <script>
         let item = document.getElementById("item");

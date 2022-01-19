@@ -23,7 +23,8 @@ router.get('/',async (req,res)=>{
         last10Bk:blocks,
         last10Txn:txns,
         holders:address,
-        price:priceData.price
+        price:priceData.price,
+        volume: priceData.volume
     }
     res.render('index',stat);
 })
@@ -85,6 +86,8 @@ router.get('/block/:number',async (req,res)=>{
         res.send("502 - Internal server error!");
     }
 })
+
+
 
 router.get('/tx/:hash',async (req,res)=>{
     try{
@@ -159,6 +162,38 @@ router.get('/validators',async (req,res)=>{
     } catch (error) {
         
     }
+});
+
+router.get('/allBlocks',async (req,res)=>{
+    /*try {
+        //let stat = await helper.getValidatorStatus();
+        // stat = stat;
+        //var result = []
+        Object.keys(stat.sealerActivity).map((key) => {
+            result.push([key,stat.sealerActivity[key]]);
+        });
+        // console.log(result);
+        res.render('validators',{stats:result});
+    } catch (error) {
+        
+    }*/
+    res.render('allBlocks');
+});
+
+router.get('/allTransactions',async (req,res)=>{
+    /*try {
+        //let stat = await helper.getValidatorStatus();
+        // stat = stat;
+        //var result = []
+        Object.keys(stat.sealerActivity).map((key) => {
+            result.push([key,stat.sealerActivity[key]]);
+        });
+        // console.log(result);
+        res.render('validators',{stats:result});
+    } catch (error) {
+        
+    }*/
+    res.render('allTransactions');
 });
 
 module.exports = router;
